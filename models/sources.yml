@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+  - name: staging
+    description: "Raw data loaded from CSV files"
+    database: "{{ env_var('DBT_PROJECT_ID') }}"
+    schema: "{{ env_var('DBT_DATASET', 'staging') }}"
+    
+    tables:
+      - name: ventas_raw
+        description: "Sales transactions from monthly CSV uploads"
+        columns:
+          - name: Factura
+            description: "Invoice ID"
+          - name: Fecha
+            description: "Sale date"
+          - name: TotalUSD
+            description: "Total amount in USD"
+            
+      - name: productos_raw
+        description: "Product catalog"
+        
+      - name: vendedores_raw
+        description: "Sellers performance metrics"
+        
+      - name: empleados_raw
+        description: "Employee salaries and commissions"

@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: stg_ventas
+    description: "Staging layer for sales transactions"
+    columns:
+      - name: factura_id
+        description: "Invoice ID"
+        tests:
+          - not_null
+      - name: producto_codigo
+        description: "Product code"
+        tests:
+          - not_null
+      - name: vendedor_id
+        description: "Seller ID"
+        tests:
+          - not_null
+      - name: fecha_venta
+        description: "Sale date"
+        tests:
+          - not_null
+      - name: total_venta
+        description: "Total sale amount"
+        tests:
+          - not_null
+
+  - name: stg_productos
+    description: "Staging layer for products"
+    columns:
+      - name: producto_codigo
+        description: "Unique product code"
+        tests:
+          - unique
+          - not_null
+      - name: precio_lista
+        description: "List price"
+        tests:
+          - not_null
+      - name: costo
+        description: "Product cost"
+        tests:
+          - not_null
+
+  - name: stg_vendedores
+    description: "Staging layer for sellers metrics"
+    columns:
+      - name: vendedor_id
+        description: "Unique seller ID"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_empleados
+    description: "Staging layer for employees"
+    columns:
+      - name: empleado_id
+        description: "Unique employee ID"
+        tests:
+          - unique
+          - not_null
+      - name: salario_base
+        description: "Base salary"
+        tests:
+          - not_null
