@@ -1,6 +1,11 @@
 {{
     config(
-        materialized='table'
+        materialized='table',
+        partition_by={
+            'field': 'periodo_mes',
+            'data_type': 'date'
+        },
+        cluster_by=['empleado_nombre', 'puesto']
     )
 }}
 

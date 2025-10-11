@@ -1,8 +1,15 @@
 {{
     config(
-        materialized='table'
+        materialized='table',
+        partition_by={
+            'field': 'fecha_venta',
+            'data_type': 'date',
+            'granularity': 'month'
+        },
+        cluster_by=['producto_nombre', 'vendedor_nombre']
     )
 }}
+
 
 SELECT
     -- Hechos y métricas de la tabla de ventas
