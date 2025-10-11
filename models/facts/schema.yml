@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: fact_ventas
+    description: "Sales fact table with incremental loading"
+    columns:
+      - name: venta_key
+        description: "Unique sale key"
+        tests:
+          - unique
+          - not_null
+      - name: producto_key
+        description: "FK to dim_productos"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_productos')
+              field: producto_key
+      - name: vendedor_key
+        description: "FK to dim_vendedores"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_vendedores')
+              field: vendedor_key
+      - name: sucursal_key
+        description: "FK to dim_sucursales"
+        tests:
+          - relationships:
+              to: ref('dim_sucursales')
+              field: sucursal_key
+      - name: fecha_key
+        description: "FK to dim_tiempo"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_tiempo')
+              field: fecha_key
+      - name: total_venta
+        description: "Total sale amount"
+        tests:
+          - not_null
+
+  - name: fact_comisiones
+    description: "Commissions fact table"
+    columns:
+      - name: comision_key
+        description: "Unique commission key"
+        tests:
+          - unique
+          - not_null
+      - name: empleado_key
+        description: "FK to dim_empleados"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_empleados')
+              field: empleado_key
+      - name: periodo_mes
+        description: "Commission period (month)"
+        tests:
+          - not_null

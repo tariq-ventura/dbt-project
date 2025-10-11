@@ -1,0 +1,21 @@
+suntech:
+  target: prod
+  outputs:
+    prod:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('DBT_PROJECT_ID') }}"
+      dataset: "{{ env_var('DBT_DATASET') }}"
+      location: "{{ env_var('DBT_LOCATION') }}"
+      threads: 4
+      timeout_seconds: 300
+      priority: interactive
+      
+    dev:
+      type: bigquery
+      method: oauth
+      project: "{{ env_var('DBT_PROJECT_ID') }}"
+      dataset: dev_dimensions
+      location: "{{ env_var('DBT_LOCATION') }}"
+      threads: 2
+      timeout_seconds: 300

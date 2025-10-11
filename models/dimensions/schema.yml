@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: dim_productos
+    description: "Product dimension table"
+    columns:
+      - name: producto_key
+        description: "Surrogate key for product"
+        tests:
+          - unique
+          - not_null
+      - name: producto_codigo
+        description: "Natural key - product code"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_vendedores
+    description: "Seller dimension table"
+    columns:
+      - name: vendedor_key
+        description: "Surrogate key for seller"
+        tests:
+          - unique
+          - not_null
+      - name: vendedor_id
+        description: "Natural key - seller ID"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_empleados
+    description: "Employee dimension table"
+    columns:
+      - name: empleado_key
+        description: "Surrogate key for employee"
+        tests:
+          - unique
+          - not_null
+      - name: empleado_id
+        description: "Natural key - employee ID"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_sucursales
+    description: "Branch dimension table"
+    columns:
+      - name: sucursal_key
+        description: "Surrogate key for branch"
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_tiempo
+    description: "Time dimension table"
+    columns:
+      - name: fecha_key
+        description: "Date key in YYYYMMDD format"
+        tests:
+          - unique
+          - not_null
+      - name: fecha
+        description: "Actual date"
+        tests:
+          - unique
+          - not_null
