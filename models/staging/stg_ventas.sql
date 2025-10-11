@@ -17,9 +17,9 @@ cleaned AS (
         CAST(VendedorID AS INT64) as vendedor_id,
         
         -- Fechas
-        PARSE_DATE('%Y-%m-%d', Fecha) as fecha_venta,
-        EXTRACT(YEAR FROM PARSE_DATE('%Y-%m-%d', Fecha)) as anio,
-        EXTRACT(MONTH FROM PARSE_DATE('%Y-%m-%d', Fecha)) as mes,
+        Fecha as fecha_venta,
+        EXTRACT(YEAR FROM Fecha) as anio,
+        EXTRACT(MONTH FROM Fecha) as mes,
         
         -- Textos
         TRIM(Producto) as producto_nombre,

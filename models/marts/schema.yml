@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: reporte_ventas_detalle
+    description: "Tabla de reporte desnormalizada que une ventas con sus dimensiones (productos, vendedores, sucursales) para análisis y BI."
+    columns:
+      - name: total_venta
+        description: "Monto total de la venta después de descuentos."
+        tests:
+          - not_null
+
+      - name: utilidad
+        description: "Utilidad generada en la venta (Total Venta - Costo Total)."
+        tests:
+          - not_null
+
+      - name: producto_nombre
+        description: "Nombre del producto vendido."
+
+      - name: vendedor_nombre
+        description: "Nombre del vendedor que realizó la venta."
+
+      - name: sucursal_nombre
+        description: "Nombre de la sucursal donde se realizó la venta."
+
+  - name: reporte_comisiones_mensuales
+    description: "Tabla de reporte que muestra el desglose de comisiones y salarios por empleado para un período mensual."
+    columns:
+      - name: empleado_nombre
+        description: "Nombre completo del empleado."
+
+      - name: salario_total
+        description: "Salario total del empleado en el período (Salario Base + Comisión)."
+        tests:
+          - not_null
